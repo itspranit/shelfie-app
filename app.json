@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme":"shelfieapp",
     "name": "shelfie_app",
     "slug": "shelfie_app",
     "version": "1.0.0",
