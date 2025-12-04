@@ -1,5 +1,5 @@
 import { StyleSheet,Text} from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import Spacer from '../../components/Spacer'
 import {Link} from 'expo-router'
 import {Colors} from "../../constants/Colors"
@@ -8,18 +8,37 @@ import {Colors} from "../../constants/Colors"
 import ThemedView from '../../components/Themedview'
 import ThemedText from '../../components/ThemedText'
 import ThemedButton from '../../components/ThemedButton'
-
+import ThemedTextInput from '../../components/ThemedTextInput'
 
 const login = () => {
+  const [email,setEmail]=useState('')
+  const [password,setPassword]=useState('') /*to record and store user input */
+  
   const handlesubmit=()=>{
-    console.log("login form submitted")
+    console.log('login form submitted',email,password)
   }
   return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <ThemedView style={styles.container}>
 
     <Spacer/>
 
     <ThemedText title={true}>login to your account</ThemedText>
+
+    <ThemedTextInput placeholder="Email" 
+       style={{width:'80%',marginBottom:20}}
+       keyboardType="email-address"
+       onChangeText={setEmail}
+       value={email}
+       />
+
+    <ThemedTextInput placeholder="password" 
+       style={{width:'80%',marginBottom:20}}
+       keyboardType="password"
+       onChangeText={setPassword}
+       value={password}
+       secureTextEntry
+       />
 
     <ThemedButton onPress={handlesubmit}><Text style={{color:'#f2f2f2'}}>Login</Text></ThemedButton>
 
@@ -27,6 +46,7 @@ const login = () => {
     <Link href="/register"><ThemedText>Register instead</ThemedText></Link>
 
     </ThemedView>
+    </TouchableWithoutFeedback>
   )
 }
 
