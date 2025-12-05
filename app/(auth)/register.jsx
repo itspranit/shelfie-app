@@ -18,6 +18,7 @@ const Register = () => {
   const [password,setPassword]=useState('') 
   
   const {register}=useUser()
+  const [error,setError]= useState()
 
 
   const handleSubmit= async() => {
@@ -26,7 +27,7 @@ const Register = () => {
       
     }
     catch(error){
-
+      setError(error.message)
     }
   }
   return (
@@ -54,6 +55,9 @@ const Register = () => {
     <ThemedButton onPress={handlesubmit}>
       <Text style={{color:'#f2f2f2'}}>Register</Text>
     </ThemedButton>
+    <Spacer />
+    {error && <Text style={styles.error}>{error}</Text>}
+
 
     <Spacer/>
     <Link href="/login"><ThemedText>login instead</ThemedText></Link>
@@ -86,5 +90,14 @@ const styles= StyleSheet.create({
     },
     pressed:{
       opacity:0.8
+    },
+    error: {
+      color: Colors.warning,
+      padding: 10,
+      backgroundColor: '#f5c1c8',
+      borderColor: Colors.warning,
+      borderWidth: 1,
+      borderRadius: 6,
+      marginHorizontal: 10,
     }
 })
