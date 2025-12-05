@@ -1,22 +1,33 @@
-import { Keyboard, StyleSheet,Text} from 'react-native'
+import { Keyboard, StyleSheet,Text,TouchableWithoutFeedback} from 'react-native'
 import React, { useState } from 'react'
 import Spacer from '../../components/Spacer'
 import {Link} from 'expo-router'
 import {Colors} from "../../constants/Colors"
+import { useUser } from '../../hooks/useUser'
 
 
 import ThemedView from '../../components/Themedview'
 import ThemedText from '../../components/ThemedText'
 import ThemedButton from '../../components/ThemedButton'
 import ThemedTextInput from '../../components/ThemedTextInput'
-import { TouchableWithoutFeedback } from 'react-native/types_generated/index'
+
 
 
 const Register = () => {
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('') 
-  const handlesubmit=()=>{
-    console.log("registered",email,password)
+  
+  const {register}=useUser()
+
+
+  const handleSubmit= async() => {
+    try{
+      await register(email,password)
+      
+    }
+    catch(error){
+
+    }
   }
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
