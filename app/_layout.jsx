@@ -3,12 +3,13 @@ import {Stack} from 'expo-router'
 import React from 'react'
 import {Colors} from "../constants/Colors"
 import {StatusBar} from 'expo-status-bar'
+import { UserProvider } from '../contexts/UserContext'
 
 const RootLayout = () => {
     const colorScheme=useColorScheme()
     const theme= Colors[colorScheme] ?? Colors.light //fallback to light theme if not able to access device default theme
   return (
-    <>
+    <UserProvider>
         <StatusBar value="auto"/> 
         <Stack screenOptions={{
             headerStyle:{backgroundColor:theme.navBackground},
@@ -19,7 +20,7 @@ const RootLayout = () => {
             <Stack.Screen name="index" options={{title:'Home'}}/>
             
         </Stack>
-    </>
+    </UserProvider>
   ) 
 }
 
