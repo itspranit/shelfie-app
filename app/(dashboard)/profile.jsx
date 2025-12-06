@@ -8,13 +8,14 @@ import ThemedView from '../../components/Themedview'
 
 const Profile = () => {
   //to log the user out
- const {logout}=useUser()
+ const {logout,user}=useUser()
 
   return (
     <ThemedView style={styles.container}>
 
       <ThemedText title={true} style={styles.heading}>
-        Your Email
+        {/*Your Email*/}
+        {user.email}
       </ThemedText>
 
       <Spacer />
