@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Spacer from '../../components/Spacer'
 import {Link} from 'expo-router'
 import {Colors} from "../../constants/Colors"
-
+import { TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 import ThemedView from '../../components/Themedview'
 import ThemedText from '../../components/ThemedText'

@@ -35,7 +35,8 @@ const Register = () => {
     <ThemedView style={styles.container}>
     <Spacer/>
 
-    <ThemedText title={true}>register for your account</ThemedText>
+    <ThemedText title={true}>Register for your account</ThemedText>
+    <Spacer />
 
     <ThemedTextInput placeholder="Email" 
        style={{width:'80%',marginBottom:20}}
@@ -52,7 +53,7 @@ const Register = () => {
        secureTextEntry
        />
 
-    <ThemedButton onPress={handlesubmit}>
+    <ThemedButton onPress={handleSubmit}>
       <Text style={{color:'#f2f2f2'}}>Register</Text>
     </ThemedButton>
     <Spacer />
