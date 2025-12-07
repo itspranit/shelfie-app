@@ -4,12 +4,14 @@ import Spacer from '../../components/Spacer'
 import {Link} from 'expo-router'
 import {Colors} from "../../constants/Colors"
 import { TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { useUser } from '../../hooks/useUser'
 
 import ThemedView from '../../components/Themedview'
 import ThemedText from '../../components/ThemedText'
 import ThemedButton from '../../components/ThemedButton'
 import ThemedTextInput from '../../components/ThemedTextInput'
-import { useUser } from '../../hooks/useUser'
+
+
 
 const login = () => {
   const [email,setEmail]=useState('')
@@ -58,7 +60,7 @@ const login = () => {
 
     <Spacer/>
     <Link href="/register"><ThemedText>Register instead</ThemedText></Link>
-
+   
     </ThemedView>
     </TouchableWithoutFeedback>
   )

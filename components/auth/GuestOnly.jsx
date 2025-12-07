@@ -1,7 +1,8 @@
 import { useRouter } from "expo-router";
 import { useUser } from "../../hooks/useUser";
 import { useEffect } from "react";
-import { Text } from "react-native"; // Assuming Text is imported if it's used
+
+import ThemedLoader from '../../components/ThemedLoader'
 
 const GuestOnly = ({ children }) => {
     const { user, authChecked } = useUser();
@@ -16,7 +17,9 @@ const GuestOnly = ({ children }) => {
 
     // Show loading state until authentication check is complete
     if (!authChecked || user === undefined) { 
-        return <Text>Loading</Text>;
+        return (
+            <ThemedLoader/>
+        )
     }
     
     // If the check is complete and no user is found (i.e., a guest), render the children

@@ -3,6 +3,9 @@ import { useUser } from "../../hooks/useUser";
 import { useEffect } from "react";
 import { Text } from "react-native"; // Assuming Text is imported if it's used
 
+
+import ThemedLoader from '../../components/ThemedLoader'
+
 const UserOnly = ({ children }) => {
     const { user, authChecked } = useUser();
     const router = useRouter();
@@ -17,7 +20,9 @@ const UserOnly = ({ children }) => {
     // Show loading state until authentication check is complete, 
     // or if the user is undefined (still loading)
     if (!authChecked || user === undefined) { 
-        return <Text>Loading</Text>;
+        return (
+            <ThemedLoader/>
+        )
     }
     
     // If the check is complete and the user is found, render the children
