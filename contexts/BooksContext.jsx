@@ -66,11 +66,25 @@ export function BooksProvider({children}){
 
     }
     useEffect(()=>{
+        let unsubscribe
+        const channel=`databases.${DATABASE_ID}.collections.${COLLECTION_ID}.documents`
+
         if(user){
             fetchBooks()
+
+            unsubscribe=client.subscribe(channel,(response)=> {
+                const {payload,events}=response
+
+                if(events[0].includes('create')){
+                    setBooks((prevBooks)=>[...prevBooks,payload])
+                }
+            })
         }
         else{
             setBooks([])
+        }
+        return ()=>{
+            if(unsubscribe) unsubscribe()
         }
     },[user])
 
