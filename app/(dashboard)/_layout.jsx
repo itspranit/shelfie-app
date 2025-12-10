@@ -50,17 +50,24 @@ const DashboardLayout = () => {
         }}
       />
 
-      <Tabs.Screen
-        name="books"
+<Tabs.Screen
+        name="create"
         options={{
-          title: "Books",
+          title: "Create",
           tabBarIcon: ({ focused }) => (
             <Ionicons
               size={24}
-              name={focused ? "book" : "book-outline"}
+              name={focused ? "create" : "create-outline"}
               color={focused ? theme.iconColorFocused : theme.iconColor}
             />
           )
+        }}
+      />
+{/*this code is used to remove books[id] from showing as a option on ashboarf*/}
+      <Tabs.Screen
+        name="books/[id]"
+        options={{
+          href:null
         }}
       />
     </Tabs>
